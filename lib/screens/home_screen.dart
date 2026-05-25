@@ -34,9 +34,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Text(snapshot.toString());
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
-              } else {}
-              return const CircularProgressIndicator();
-            }),
+              } else {
+                final products = snapshot.data!;
+                return GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(products[index].title),
+                        subtitle: Text(products[index].description),
+                    );
+                  }
+                );
+              }
+            }
+          ),
       ),
     );
   }
