@@ -14,10 +14,12 @@ class _SignupPageState extends State<SignupPage> {
   final formKey = GlobalKey<FormState>();
 
   TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
   TextEditingController date = TextEditingController();
-  TextEditingController password = TextEditingController();
   TextEditingController age = TextEditingController();
-  
+  TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
+
   void login() {
     if (formKey.currentState!.validate()) {
       Navigator.pushReplacement(
@@ -41,7 +43,6 @@ class _SignupPageState extends State<SignupPage> {
             children: [
               TextFormField(
                 controller: email,
-                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(labelText: "Email"),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -52,21 +53,65 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 15),
               TextFormField(
-                controller: password,
+                controller: phone,
                 obscureText: false,
-                decoration: const InputDecoration(labelText: "Password"),
+                decoration:
+                    const InputDecoration(labelText: "Enter the mobile Number"),
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly,
                 ],
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Enter a Password';
+                    return 'Enter a Number';
                   }
                   return null;
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
+              TextFormField(
+                controller: date,
+                decoration: InputDecoration(labelText: 'Enter the Date'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please Enter the date';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 15),
+              TextFormField(
+                controller: age,
+                decoration: InputDecoration(labelText: 'Enter the Age'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Enter the age';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: password,
+                decoration: InputDecoration(labelText: 'Enter the password'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Enter the Password';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: confirmPassword,
+                decoration:
+                    InputDecoration(labelText: 'Enter Confirm Password'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Enter Confirm Password';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 15),
               ElevatedButton(
                 onPressed: login,
                 child: const Text("Signup"),
