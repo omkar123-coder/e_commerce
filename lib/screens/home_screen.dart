@@ -23,7 +23,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('E-Commerce Screen'),
+      ),
+      body: Center(
+        child: FutureBuilder(
+            future: ApiService.fetchProduct(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.toString());
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              } else {}
+              return const CircularProgressIndicator();
+            }),
+      ),
     );
   }
 }

@@ -17,7 +17,7 @@ class ApiService {
       }
     } catch (e) {
       log('Network error: $e');
-      throw Exception('failed to fetch products');
+      throw Exception('failed to show products');
     }
   }
 }
