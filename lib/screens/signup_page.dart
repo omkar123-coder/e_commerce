@@ -1,4 +1,3 @@
-import 'package:e_commerce/screens/home_screen.dart';
 import 'package:e_commerce/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,12 +19,12 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
 
-  void login() {
+  void signUp() {
     if (formKey.currentState!.validate()) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => const LoginPage(),
         ),
       );
     }
@@ -113,21 +112,9 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 15),
               ElevatedButton(
-                onPressed: login,
-                child: const Text("Signup"),
+                onPressed: signUp,
+                child: const Text("Login"),
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const LoginPage(),
-                    ),
-                  );
-                },
-                child: const Text("Go to Login"),
-              )
             ],
           ),
         ),

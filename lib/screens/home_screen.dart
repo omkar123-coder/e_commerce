@@ -41,15 +41,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisCount: 2),
                     itemBuilder: (context, index) {
                       return ListTile(
-                        title: Text(products[index].title),
+                      title: Text(products[index].title),
                         subtitle: Text(products[index].description),
-                    );
-                  }
-                );
-              }
+                  );
+                }
+              );
             }
-          ),
+          }
+        ),
       ),
     );
-  }
+  } 
 }
