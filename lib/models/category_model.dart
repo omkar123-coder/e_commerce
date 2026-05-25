@@ -1,7 +1,7 @@
 class CategoryModel {
-  final int id;
+  final String id;
   final String title;
-  final double price;
+  final String price;
   final String description;
   final String image;
 
@@ -15,11 +15,11 @@ class CategoryModel {
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(
-      id: json['id'] as int,
-      title: json['title'] ?? '',
-      price: (json['price'] as num).toDouble(),
-      description: json['description'] ?? '',
-      image: json['image'] ?? '',
+      id: json['id'],
+      title: json['title'],
+      price: json['price'](),
+      description: json['description'],
+      image: json['image'],
     );
   }
 }
